@@ -2,7 +2,7 @@ import streamlit as st
 import random 
 import time 
 from time import sleep
-from stqdm import stqdm
+
 
 
 questions = {
