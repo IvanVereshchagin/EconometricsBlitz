@@ -1,6 +1,9 @@
 import streamlit as st
 import random 
 import time 
+from time import sleep
+from stqdm import stqdm
+
 
 questions = {
  1 : 'Определение математического ожидания дискретной случайной величины, 𝑵 – количество элементов генеральной совокупности' ,
@@ -47,21 +50,35 @@ questions = {
 }
 
 
-
+    
 
 if st.button('Показать вопросы'):
+
+    
+
+   
         
     numbers = random.sample(range(1, 41), 10)
     for i in numbers :
         st.info(str(i) + '  ' + questions[i])
+
     
    
         
     with st.sidebar :
+
+        
     
         for i in numbers:
             st.write(i)
             st.image(f'answr{i}.jpg')
+
+    ph = st.empty()
+    N = 5*60
+    for secs in range(N,0,-1):
+        mm, ss = secs//60, secs%60
+        ph.metric("Таймер", f"{mm:02d}:{ss:02d}")
+        time.sleep(1)
 
 
 
